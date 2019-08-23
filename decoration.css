@@ -1,0 +1,77 @@
+html, body {
+    //background-color: red;
+    height: 100%;
+    width: 100%;
+}
+.\.soundButton{
+    height: 30px;
+    width: 200px;
+    background-color: cornflowerblue;
+    color: white;
+    cursor: pointer;
+    border: none;
+    /*
+    add deformable buttons later
+     */
+}
+#outerContainer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#container {
+   //background: yellow;
+    //height: 50vh;
+    height: 600px;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-color: cadetblue;
+    border-width: 5px;
+}
+#container span {
+    width: 100%;
+   // text-align: center;
+}
+#case {
+    display: flex;
+    background-color: lightseagreen;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    height: 20%;
+}
+#case span {
+    margin: 20px;
+}
+#question {
+    background: aqua;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 10%;
+}
+#answer {
+    background: beige;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 70%;
+}
+#answer span {
+    margin: 20px;
+}
+.multiChoice {
+    margin: 5px;
+}
+#what {
+    cursor: help;
+}
