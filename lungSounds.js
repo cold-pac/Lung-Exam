@@ -1,6 +1,7 @@
-let answerBox = document.getElementById('answer');
+let answerBox = document.getElementById('answer'), answerTag;
 function changeAnswers (element) {
     console.log(element.id);
+    answerTag = element.id;
     switch (element.id) {
         case "percussion":
             answerBox.innerHTML =
@@ -63,6 +64,15 @@ function changeWhat() {
 }
 
 //executed every time you click a multiple choice answer
+let yourAnswers = {}, yourAnswersText, yourAnswersKeys;
+function refreshYourAnswers() {
+    yourAnswersText = document.getElementById("yourAnswers");
+    yourAnswersText.innerHTML = "";
+    yourAnswersKeys = Object.keys(yourAnswers);
+    yourAnswersKeys.forEach(function(elem) {
+        yourAnswersText.innerHTML += elem + " is " + yourAnswers[elem] + "<br/>";
+    });
+}
 function highlightThis () {
     //alert(this.id);
     multiChoiceAnswers = document.getElementsByClassName("multiChoice");
@@ -70,6 +80,9 @@ function highlightThis () {
         multiChoiceAnswers[i].style.backgroundColor = "beige";
     }
     this.style.backgroundColor = "yellow";
+    yourAnswers[answerTag] = this.id;
+    console.log(yourAnswers);
+    refreshYourAnswers();
 }
 
 let multiChoiceAnswers;
