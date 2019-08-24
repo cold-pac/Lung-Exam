@@ -87,8 +87,13 @@ html, body {
     // background-color: mediumvioletred;
     //padding: 30px;
 }
+#answers2sub li, #answers2sub2 li {
+    width: 200px;
+}
 .multiChoice {
     margin: 5px;
+    cursor: pointer;
+    width: available;
 }
 #what {
     cursor: help;
