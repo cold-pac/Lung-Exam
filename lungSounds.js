@@ -1,6 +1,8 @@
+//TODO: clean this code up when you've finished
+
 let answerBox = document.getElementById('answer'), answerTag;
 function changeAnswers (element) {
-    console.log(element.id);
+    //console.log(element.id);
     answerTag = element.id;
     switch (element.id) {
         case "percussion":
@@ -8,13 +10,16 @@ function changeAnswers (element) {
                 `
                  <span id = "examDescription"><i>You start tapping the patient.</i> You find:</span>
                  <ol id = "answers1">
-                    <li id = "hyperresonant" class = "multiChoice">Hyper-resonance to percussion</li>
+                    <li id = "hyperresonant" class = "multiChoice">Hyper-resonant to percussion</li>
                     <li id = "resonant" class = "multiChoice">Resonant to percussion</li>
                     <li id = "dull" class = "multiChoice">Dull to percussion</li>
                     <li id = "stony" class = "multiChoice">Stony dullness</li>
                  </ol>
                  `;
             addClickChange();
+            if (yourAnswers.hasOwnProperty(element.id)) {
+                document.getElementById(yourAnswers[element.id]).style.backgroundColor = "yellow"; //TODO: make a unified CSS function that just takes the HTML DOM object's id and applies the 'answer' style to it. Hopefully more complicated that just "bgColor = yellow"
+            }
             break;
         case "auscultation":
             answerBox.innerHTML =
@@ -40,6 +45,12 @@ function changeAnswers (element) {
                  </span>
                 `;
             addClickChange();
+            yourAnswers.auscultation.breathSounds.forEach(function(elem) {
+               document.getElementById(elem).style.backgroundColor = "yellow";
+            });
+            yourAnswers.auscultation.adventitiousSounds.forEach(function(elem) {
+                document.getElementById(elem).style.backgroundColor = "yellow";
+            });
             break;
         case "resonance":
             answerBox.innerHTML =
@@ -53,6 +64,9 @@ function changeAnswers (element) {
                 `;
             addClickChange();
             changeWhat();
+            if (yourAnswers.hasOwnProperty(element.id)) {
+                document.getElementById(yourAnswers[element.id]).style.backgroundColor = "yellow"; //TODO: make a unified CSS function that just takes the HTML DOM object's id and applies the 'answer' style to it. Hopefully more complicated that just "bgColor = yellow"
+            }
             break;
     }
 }
@@ -65,26 +79,70 @@ function changeWhat() {
 
 //executed every time you click a multiple choice answer
 let yourAnswers = {}, yourAnswersText, yourAnswersKeys;
+yourAnswers["auscultation"] = {breathSounds: [], adventitiousSounds: []};
 function refreshYourAnswers() {
     yourAnswersText = document.getElementById("yourAnswers");
     yourAnswersText.innerHTML = "";
     yourAnswersKeys = Object.keys(yourAnswers);
+    //console.log(yourAnswersKeys);
     yourAnswersKeys.forEach(function(elem) {
-        yourAnswersText.innerHTML += elem + " is " + yourAnswers[elem] + "<br/>";
+        if (elem == "auscultation") {
+            if (yourAnswers[elem]["breathSounds"].length == 0 && yourAnswers[elem]["adventitiousSounds"].length == 0) {
+
+            } else if (yourAnswers[elem]["breathSounds"].length != 0 && yourAnswers[elem]["adventitiousSounds"].length != 0) {
+                yourAnswersText.innerHTML += elem + ": " + yourAnswers[elem]["breathSounds"] + ", " + yourAnswers[elem]["adventitiousSounds"] + "<br/>";
+            } else if (yourAnswers[elem]["breathSounds"].length != 0 && yourAnswers[elem]["adventitiousSounds"].length == 0) {
+                yourAnswersText.innerHTML += elem + ": " + yourAnswers[elem]["breathSounds"] + "<br/>";
+            } else if (yourAnswers[elem]["breathSounds"].length == 0 && yourAnswers[elem]["adventitiousSounds"].length != 0) {
+                yourAnswersText.innerHTML += elem + ": " + yourAnswers[elem]["adventitiousSounds"] + "<br/>";
+            }
+        } else {
+            yourAnswersText.innerHTML += elem + ": " + yourAnswers[elem] + "<br/>";
+        }
     });
 }
+
+//executed when multiChoice is clicked
 function highlightThis () {
     //alert(this.id);
+
     multiChoiceAnswers = document.getElementsByClassName("multiChoice");
-    for (var i = 0; i < multiChoiceAnswers.length; i++) {
-        multiChoiceAnswers[i].style.backgroundColor = "beige";
+    if (answerTag != "auscultation") {
+        for (var i = 0; i < multiChoiceAnswers.length; i++) {
+            multiChoiceAnswers[i].style.backgroundColor = "beige";
+        }
     }
+
+
+    if (answerTag == "auscultation") { //this part is not very elegant
+        if (this.id == "vesicular" || this.id == "bronchial") {
+            yourAnswers.auscultation.breathSounds = [];
+            yourAnswers.auscultation.breathSounds.push(this.id);
+        } else {
+            yourAnswers.auscultation.adventitiousSounds = [];
+            yourAnswers.auscultation.adventitiousSounds.push(this.id);
+        }
+    } else {
+        yourAnswers[answerTag] = this.id;
+    }
+
+    console.log(answerTag);
+    if (answerTag == "auscultation") {
+        for (var i = 0; i < multiChoiceAnswers.length; i++) {
+            if (yourAnswers.auscultation.breathSounds.indexOf(multiChoiceAnswers[i].id) == -1 && yourAnswers.auscultation.adventitiousSounds.indexOf(multiChoiceAnswers[i].id) == -1) {
+                multiChoiceAnswers[i].style.backgroundColor = "beige";
+            }
+
+        }
+    }
+
     this.style.backgroundColor = "yellow";
-    yourAnswers[answerTag] = this.id;
-    console.log(yourAnswers);
+    //console.log(yourAnswers); //object containing your "answers"
     refreshYourAnswers();
 }
 
+
+//Adds 'click' event listener to all multiple choice answers. Called every time you click "percussion", "auscultation", "resonance"
 let multiChoiceAnswers;
 function addClickChange () {
     multiChoiceAnswers = document.getElementsByClassName("multiChoice");
@@ -92,7 +150,3 @@ function addClickChange () {
         multiChoiceAnswers[i].addEventListener("click", highlightThis);
     }
 }
-
-
-
-// make an object constructor function that creates the "answer object"? or separate objects for every case? or... both?
