@@ -2,6 +2,8 @@ html, body {
     //background-color: red;
     height: 100%;
     width: 100%;
+    font-size: 1.04em;
+    font-family: Monospace;
 }
 .\.soundButton{
     height: 30px;
@@ -25,7 +27,7 @@ html, body {
 #container {
    //background: yellow;
     //height: 50vh;
-    height: 600px;
+    height: 80vh;
     width: 50vw;
     display: flex;
     flex-direction: column;
@@ -51,7 +53,7 @@ html, body {
     margin: 20px;
 }
 #question {
-    background: aqua;
+    //background: aqua;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -65,9 +67,25 @@ html, body {
     justify-content: flex-start;
     align-items: flex-start;
     height: 70%;
+    flex-wrap: wrap;
 }
-#answer span {
+#examDescription {
     margin: 20px;
+}
+#answers2 {
+    padding: 30px;
+    //background-color: red;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+#answers2sub {
+    //background-color: firebrick;
+    //padding: 30px;
+}
+#answers2sub2 {
+    // background-color: mediumvioletred;
+    //padding: 30px;
 }
 .multiChoice {
     margin: 5px;
