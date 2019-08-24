@@ -66,7 +66,7 @@ html, body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    height: 70%;
+    height: 60%;
     flex-wrap: wrap;
 }
 #examDescription {
@@ -97,4 +97,7 @@ html, body {
 }
 #what {
     cursor: help;
+}
+#yourAnswers {
+    height: 10%;
 }
