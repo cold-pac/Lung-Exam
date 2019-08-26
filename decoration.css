@@ -117,3 +117,13 @@ html, body {
     text-align: right;
     justify-self: end;
 }
+#submitButton {
+    background-color: firebrick;
+    color: white;
+    font-family: Ariel;
+    font-weight: 300;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 5px;
+}
