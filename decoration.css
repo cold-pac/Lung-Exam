@@ -98,6 +98,22 @@ html, body {
 #what {
     cursor: help;
 }
-#yourAnswers {
+#yourAnswersContainer {
+    //background-color: green;
     height: 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+#yourAnswers {
+    //background-color: yellow;
+    height: 100%;
+
+}
+#buttonContainer {
+    //background-color: firebrick;
+    padding: 20px;
+    align-self: end;
+    text-align: right;
+    justify-self: end;
 }
