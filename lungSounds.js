@@ -77,14 +77,16 @@ function changeWhat() {
     document.getElementById("what").innerHTML = "'" + whatOptions[randomWhat] + "'";
 }
 
-//executed every time you click a multiple choice answer
+//refreshes the "your answers" bar - executed every time you click a multiple choice answer
 let yourAnswers = {}, yourAnswersText, yourAnswersKeys;
 yourAnswers["auscultation"] = {breathSounds: [], adventitiousSounds: []};
+let desiredOrder = ["percussion", "auscultation", "resonance"];
 function refreshYourAnswers() {
     yourAnswersText = document.getElementById("yourAnswers");
     yourAnswersText.innerHTML = "";
     yourAnswersKeys = Object.keys(yourAnswers);
-    //console.log(yourAnswersKeys);
+    yourAnswersKeys = yourAnswersKeys.sort((a,b) => desiredOrder.indexOf(a) > desiredOrder.indexOf(b) ? 1 : desiredOrder.indexOf(a) < desiredOrder.indexOf(b) ? -1 : 0);
+    console.log(yourAnswersKeys);
     yourAnswersKeys.forEach(function(elem) {
         if (elem == "auscultation") {
             if (yourAnswers[elem]["breathSounds"].length == 0 && yourAnswers[elem]["adventitiousSounds"].length == 0) {
@@ -105,7 +107,6 @@ function refreshYourAnswers() {
 //executed when multiChoice is clicked
 function highlightThis () {
     //alert(this.id);
-
     multiChoiceAnswers = document.getElementsByClassName("multiChoice");
     if (answerTag != "auscultation") {
         for (var i = 0; i < multiChoiceAnswers.length; i++) {
