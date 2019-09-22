@@ -196,7 +196,7 @@ let answers = {
         percussion: "hyperresonant",
         percussionOptions: ["hyperresonant1"],
         auscultation: ["diminished vesicular breath sounds", "no adventitious sounds"],
-        auscultationOptions: ["diminishedvesicularbreathing1"],
+        auscultationOptions: ["diminishedvesicularbreathing1", "expiratorywheeze1"],
         resonance: "normal vocal resonance",
         resonanceOptions: ["normalvocalresonance1"],
         investigations: ["spirometry/PFTs", "genetic screen for alpha-1 antitrypsin deficiency", "FBC - anaemia can contribute to dyspnoea", "BNP for heart failure", "ABGs/VBGs for severity", "CXR"]
@@ -207,9 +207,9 @@ let answers = {
         percussion: "dull",
         percussionOptions: [],
         auscultation: ["bronchial breathing", "fine crackles"],
-        auscultationOptions: [],
+        auscultationOptions: ["bronchialbreathing1", "finecrackles1"],
         resonance: "increased vocal resonance",
-        resonanceOptions: [],
+        resonanceOptions: ["egophony1", "egophony2"],
         investigations: []
     },
     bronchiectasis : {
@@ -218,13 +218,14 @@ let answers = {
         percussion: "",
         percussionOptions: [],
         auscultation: ["coarse crackles"],
-        auscultationOptions: [],
+        auscultationOptions: ["coursecrackles1", "coursecrackles2"],
         resonance: "",
         resonanceOptions: []
     }
 };
 
 
+//currently, every time you click it it picks one of the options at random - happy accident? should change this to = variable so it stays the same every click?
 let testCase;
 function selectCase () {
     testCase = possibleConditions[Math.floor(Math.random()*possibleConditions.length)];
