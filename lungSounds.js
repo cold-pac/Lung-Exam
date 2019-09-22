@@ -1,4 +1,29 @@
 //TODO: clean this code up when you've finished
+function startTest () {
+    document.getElementById("container").innerHTML = `
+        <span id = "case">
+            <span id = "case-hitter">Presenting Complaint + signs: Thinking of putting history here. Would that work? Maybe I could generate one randomly. Hm. Can put in signs chosen at random, based on the probability they'd be in an actual patient. e.g. 30% chance bronchiectasis will have clubbing</span>
+        </span>
+        <span id = "question">
+            <button class = ".soundButton" id = "percussion" onclick = "changeAnswers(this)">Percussion</button>
+            <button class = ".soundButton" id = "auscultation" onclick = "changeAnswers(this)">Auscultation</button>
+            <button class = ".soundButton" id = "resonance" onclick = "changeAnswers(this)">Vocal Resonance</button>
+        </span>
+        <span id = "answer">
+            <span id = "examDescription">Your options will go here. Listen carefully.</span>
+        </span>
+        <span id = "yourAnswersContainer">
+            <span id = "yourAnswers">
+                Your answers will go here :)
+            </span>
+            <span id = "buttonContainer">
+                <button id = "submitButton">Submit Answers</button>
+            </span>
+        </span>
+    `;
+    answerBox = document.getElementById("answer");
+};
+
 
 let answerBox = document.getElementById('answer'), answerTag;
 function changeAnswers (element) {
@@ -29,24 +54,26 @@ function changeAnswers (element) {
                      <span id = "answers2sub">
                          <ol>
                          <h4>Breath sounds</h4>
-                            <li id = "vesicular" class = "multiChoice">Vesicular breath sounds</li>
-                            <li id = "bronchial" class = "multiChoice">Bronchial breath sounds</li>
+                            <li id = "vesicular breath sounds" class = "multiChoice">Vesicular breath sounds</li>
+                            <li id = "diminished vesicular breath sounds" class = "multiChoice">Diminished vesicular breath sounds</li>
+                            <li id = "bronchial breathing" class = "multiChoice">Bronchial breath sounds</li>
                          </ol>
                      </span>
                      <span id = "answers2sub2">
                          <ol>
                          <h4>Adventitious sounds</h4>
-                            <li id = "noAdded" class = "multiChoice">No adventitious sounds</li>
+                            <li id = "no adventitious sounds" class = "multiChoice">No adventitious sounds</li>
                             <li id = "wheeze" class = "multiChoice">Wheeze</li>
                             <li id = "stridor" class = "multiChoice">Stridor</li>
-                            <li id = "crackles" class = "multiChoice">Crackles</li>
+                            <li id = "fine crackles" class = "multiChoice">Fine crackles</li>
+                            <li id = "coarse crackles" class = "multiChoice">Course crackles</li>
                          </ol>
                      </span>
                  </span>
                 `;
             addClickChange();
             yourAnswers.auscultation.breathSounds.forEach(function(elem) {
-               document.getElementById(elem).style.backgroundColor = "yellow";
+                document.getElementById(elem).style.backgroundColor = "yellow";
             });
             yourAnswers.auscultation.adventitiousSounds.forEach(function(elem) {
                 document.getElementById(elem).style.backgroundColor = "yellow";
@@ -57,9 +84,9 @@ function changeAnswers (element) {
                 `
                 <span id = "examDescription"><i>You ask the patient to say <b id = "what">'toy boat'</b> while you listen to their chest.</i> You hear: </span>
                  <ol id = "answers1">
-                    <li id = "increasedVR" class = "multiChoice">Increased vocal resonance</li>
-                    <li id = "normalVR" class = "multiChoice">Normal vocal resonance</li>
-                    <li id = "reducedVR" class = "multiChoice">Reduced vocal resonance</li>
+                    <li id = "increased vocal resonance" class = "multiChoice">Increased vocal resonance</li>
+                    <li id = "normal vocal resonance" class = "multiChoice">Normal vocal resonance</li>
+                    <li id = "reduced vocal resonance" class = "multiChoice">Reduced vocal resonance</li>
                  </ol>
                 `;
             addClickChange();
@@ -116,7 +143,7 @@ function highlightThis () {
 
 
     if (answerTag == "auscultation") { //this part is not very elegant
-        if (this.id == "vesicular" || this.id == "bronchial") {
+        if (this.id == "vesicular breath sounds" || this.id == "bronchial breathing" || this.id == "diminished vesicular breath sounds") {
             yourAnswers.auscultation.breathSounds = [];
             yourAnswers.auscultation.breathSounds.push(this.id);
         } else {
@@ -150,4 +177,47 @@ function addClickChange () {
     for (var i = 0; i < multiChoiceAnswers.length; i++) {
         multiChoiceAnswers[i].addEventListener("click", highlightThis);
     }
+}
+
+
+
+// make an object constructor function that creates the "answer object"? or separate objects for every case? or... both?
+
+
+let possibleConditions;
+possibleConditions = ["COPD", "pulmonaryFibrosis", "bronchiectasis"];
+
+let answers = {
+    COPD : {
+        history: ["progressively worsening dyspnoea", "wheeze on forced expiration", "muffled, wheezy, ineffective cough", "recurrent respiratory tract infections"],
+        signs: ["Increased work of breathing: tracheal tug, costal indrawing, use of accessory muscles", "nicotine staining of the fingers", "asterixis", "barrel shaped chest", "Bilateral reduced air entry on chest expansion", "Hoover's sign", "signs of cor pulmonale..."],
+        percussion: "hyperresonant",
+        auscultation: ["diminished vesicular breath sounds", "no adventitious sounds"],
+        resonance: "normal vocal resonance",
+        investigations: ["spirometry/PFTs", "genetic screen for alpha-1 antitrypsin deficiency", "FBC - anaemia can contribute to dyspnoea", "BNP for heart failure", "ABGs/VBGs for severity", "CXR"]
+    },
+    pulmonaryFibrosis : {
+        history: ["exertional dyspnoea", "dry cough", "fatigue", "weight loss", "leg oedema"],
+        signs: ["central cyanosis", "clubbing", "tracheal deviation towards affected side", "reduced chest expansion", "pedal oedema"],
+        percussion: "dull",
+        auscultation: ["bronchial breathing", "fine crackles"],
+        resonance: "increased vocal resonance",
+        investigations: []
+    },
+    bronchiectasis : {
+        history: ["severe, persistent very loose and productive cough", "expectoration of copious amounts of mucopurulent, sometimes fetid sputum", "dyspnoea", "haemoptysis", "pleurisy"],
+        signs : ["clubbing"],
+        percussion: "",
+        auscultation: ["coarse crackles"],
+        resonance: ""
+    }
+};
+
+
+let testCase;
+function selectCase () {
+    testCase = possibleConditions[Math.floor(Math.random()*possibleConditions.length)];
+    console.log(testCase);
+    console.log(answers[testCase]);
+    document.getElementById("case-hitter").innerHTML = "history: " + answers[testCase]["history"].join(", ") + "<br/><br/>" + "signs: " + answers[testCase]["signs"].join(", ");
 }

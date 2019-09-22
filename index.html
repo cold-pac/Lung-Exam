@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>alert("works");</script>
     <meta charset="UTF-8">
     <title>Lung Sounds</title>
     <link rel="stylesheet" href="decoration.css">
@@ -9,28 +8,15 @@
 <body>
 <div id = "outerContainer">
     <div id = "container">
-        <span id = "case">
-            <span>Presenting Complaint + signs: Thinking of putting history here. Would that work? Maybe I could generate one randomly. Hm. Can put in signs chosen at random, based on the probability they'd be in an actual patient. e.g. 30% chance bronchiectasis will have clubbing</span>
-        </span>
-        <span id = "question">
-            <button class = ".soundButton" id = "percussion" onclick = "changeAnswers(this)">Percussion</button>
-            <button class = ".soundButton" id = "auscultation" onclick = "changeAnswers(this)">Auscultation</button>
-            <button class = ".soundButton" id = "resonance" onclick = "changeAnswers(this)">Vocal Resonance</button>
-        </span>
-        <span id = "answer">
-            <span id = "examDescription">Your options will go here. Listen carefully.</span>
-        </span>
-        <span id = "yourAnswersContainer">
-            <span id = "yourAnswers">
-                Your answers will go here :)
-            </span>
-            <span id = "buttonContainer">
-                <button id = "submitButton">Submit Answers</button>
-            </span>
-        </span>
-
+        <div>
+            Lung Exam Practice
+        </div>
+        <button style = "cursor: pointer" onclick = "startTest(); selectCase();">Start</button>
     </div>
 </div>
+<audio controls>
+    <source src = "">
+</audio>
 </body>
 <script src="lungSounds.js"></script>
 </html>
