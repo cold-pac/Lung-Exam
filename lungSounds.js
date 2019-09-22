@@ -67,6 +67,7 @@ function changeAnswers (element) {
                             <li id = "stridor" class = "multiChoice">Stridor</li>
                             <li id = "fine crackles" class = "multiChoice">Fine crackles</li>
                             <li id = "coarse crackles" class = "multiChoice">Course crackles</li>
+                            <li id = "pleural friction rub" class = "multiChoice">Pleural friction rub</li>
                          </ol>
                      </span>
                  </span>
@@ -84,7 +85,8 @@ function changeAnswers (element) {
                 `
                 <span id = "examDescription"><i>You ask the patient to say <b id = "what">'toy boat'</b> while you listen to their chest.</i> You hear: </span>
                  <ol id = "answers1">
-                    <li id = "increased vocal resonance" class = "multiChoice">Increased vocal resonance</li>
+                    <li id = "whispered pectoriloquy" class = "multiChoice">Whispered pectoriloquy</li>
+                    <li id = "increased vocal resonance" class = "multiChoice">Increased vocal resonance (egophony)</li>
                     <li id = "normal vocal resonance" class = "multiChoice">Normal vocal resonance</li>
                     <li id = "reduced vocal resonance" class = "multiChoice">Reduced vocal resonance</li>
                  </ol>
@@ -192,24 +194,33 @@ let answers = {
         history: ["progressively worsening dyspnoea", "wheeze on forced expiration", "muffled, wheezy, ineffective cough", "recurrent respiratory tract infections"],
         signs: ["Increased work of breathing: tracheal tug, costal indrawing, use of accessory muscles", "nicotine staining of the fingers", "asterixis", "barrel shaped chest", "Bilateral reduced air entry on chest expansion", "Hoover's sign", "signs of cor pulmonale..."],
         percussion: "hyperresonant",
+        percussionOptions: ["hyperresonant1"],
         auscultation: ["diminished vesicular breath sounds", "no adventitious sounds"],
+        auscultationOptions: ["diminishedvesicularbreathing1"],
         resonance: "normal vocal resonance",
+        resonanceOptions: ["normalvocalresonance1"],
         investigations: ["spirometry/PFTs", "genetic screen for alpha-1 antitrypsin deficiency", "FBC - anaemia can contribute to dyspnoea", "BNP for heart failure", "ABGs/VBGs for severity", "CXR"]
     },
     pulmonaryFibrosis : {
         history: ["exertional dyspnoea", "dry cough", "fatigue", "weight loss", "leg oedema"],
         signs: ["central cyanosis", "clubbing", "tracheal deviation towards affected side", "reduced chest expansion", "pedal oedema"],
         percussion: "dull",
+        percussionOptions: [],
         auscultation: ["bronchial breathing", "fine crackles"],
+        auscultationOptions: [],
         resonance: "increased vocal resonance",
+        resonanceOptions: [],
         investigations: []
     },
     bronchiectasis : {
         history: ["severe, persistent very loose and productive cough", "expectoration of copious amounts of mucopurulent, sometimes fetid sputum", "dyspnoea", "haemoptysis", "pleurisy"],
         signs : ["clubbing"],
         percussion: "",
+        percussionOptions: [],
         auscultation: ["coarse crackles"],
-        resonance: ""
+        auscultationOptions: [],
+        resonance: "",
+        resonanceOptions: []
     }
 };
 
@@ -220,4 +231,19 @@ function selectCase () {
     console.log(testCase);
     console.log(answers[testCase]);
     document.getElementById("case-hitter").innerHTML = "history: " + answers[testCase]["history"].join(", ") + "<br/><br/>" + "signs: " + answers[testCase]["signs"].join(", ");
+
+    document.getElementById("percussion").addEventListener("click", function() {
+        //console.log(answers[testCase]["percussionOptions"][Math.floor(Math.random()*answers[testCase]["percussionOptions"].length)]);
+        document.getElementById([testCase]["percussionOptions"][Math.floor(Math.random()*answers[testCase]["percussionOptions"].length)]).play();
+    });
+
+    document.getElementById("auscultation").addEventListener("click", function() {
+        //console.log(answers[testCase]["auscultationOptions"]);
+        document.getElementById(answers[testCase]["auscultationOptions"][Math.floor(Math.random()*answers[testCase]["auscultationOptions"].length)]).play();
+    });
+
+    document.getElementById("resonance").addEventListener("click", function() {
+        document.getElementById(answers[testCase]["resonanceOptions"][Math.floor(Math.random()*answers[testCase]["resonanceOptions"].length)]).play();
+    });
+
 }
