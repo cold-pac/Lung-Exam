@@ -17,7 +17,7 @@ function startTest () {
                 Your answers will go here :)
             </span>
             <span id = "buttonContainer">
-                <button id = "submitButton">Submit Answers</button>
+                <button onclick = "submitAnswers()" id = "submitButton">Submit Answers</button>
             </span>
         </span>
     `;
@@ -247,4 +247,18 @@ function selectCase () {
         document.getElementById(answers[testCase]["resonanceOptions"][Math.floor(Math.random()*answers[testCase]["resonanceOptions"].length)]).play();
     });
 
+}
+
+function submitAnswers() {
+    document.getElementById("container").innerHTML = `
+        <div id = "correct-answers">
+            Correct answer + answers[testCase]
+        </div>
+        <div id = "your-answers">
+            Your answers + yourAnswers
+        </div>
+        <button onclick = "window.location = ''" style = "cursor: pointer">Play Again</button>
+    `;
+    document.getElementById("correct-answers").innerHTML = 'Correct Answer: ' + JSON.stringify(answers[testCase]);
+    document.getElementById("your-answers").innerHTML = 'Your Answers: ' + JSON.stringify(yourAnswers);
 }
