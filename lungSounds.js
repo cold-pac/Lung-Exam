@@ -194,7 +194,7 @@ let answers = {
         history: ["progressively worsening dyspnoea", "wheeze on forced expiration", "muffled, wheezy, ineffective cough", "recurrent respiratory tract infections"],
         signs: ["Increased work of breathing: tracheal tug, costal indrawing, use of accessory muscles", "nicotine staining of the fingers", "asterixis", "barrel shaped chest", "Bilateral reduced air entry on chest expansion", "Hoover's sign", "signs of cor pulmonale..."],
         percussion: "hyperresonant",
-        percussionOptions: ["hyperresonant1"],
+        percussionOptions: ["resonant2"],
         auscultation: ["diminished vesicular breath sounds", "no adventitious sounds"],
         auscultationOptions: ["diminishedvesicularbreathing1", "expiratorywheeze1"],
         resonance: "normal vocal resonance",
@@ -205,7 +205,7 @@ let answers = {
         history: ["exertional dyspnoea", "dry cough", "fatigue", "weight loss", "leg oedema"],
         signs: ["central cyanosis", "clubbing", "tracheal deviation towards affected side", "reduced chest expansion", "pedal oedema"],
         percussion: "dull",
-        percussionOptions: [],
+        percussionOptions: ["dull1"],
         auscultation: ["bronchial breathing", "fine crackles"],
         auscultationOptions: ["bronchialbreathing1", "finecrackles1"],
         resonance: "increased vocal resonance",
@@ -235,7 +235,7 @@ function selectCase () {
 
     document.getElementById("percussion").addEventListener("click", function() {
         //console.log(answers[testCase]["percussionOptions"][Math.floor(Math.random()*answers[testCase]["percussionOptions"].length)]);
-        document.getElementById([testCase]["percussionOptions"][Math.floor(Math.random()*answers[testCase]["percussionOptions"].length)]).play();
+        document.getElementById(answers[testCase]["percussionOptions"][Math.floor(Math.random()*answers[testCase]["percussionOptions"].length)]).play();
     });
 
     document.getElementById("auscultation").addEventListener("click", function() {
@@ -259,6 +259,6 @@ function submitAnswers() {
         </div>
         <button onclick = "window.location = ''" style = "cursor: pointer">Play Again</button>
     `;
-    document.getElementById("correct-answers").innerHTML = 'Correct Answer: ' + JSON.stringify(answers[testCase]);
+    document.getElementById("correct-answers").innerHTML = 'Correct Answer: ' + testCase + "<br/>" + JSON.stringify(answers[testCase]);
     document.getElementById("your-answers").innerHTML = 'Your Answers: ' + JSON.stringify(yourAnswers);
 }
