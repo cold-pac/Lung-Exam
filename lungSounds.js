@@ -199,7 +199,50 @@ let answers = {
         auscultationOptions: ["diminishedvesicularbreathing1", "expiratorywheeze1"],
         resonance: "normal vocal resonance",
         resonanceOptions: ["normalvocalresonance1"],
-        investigations: ["spirometry/PFTs", "genetic screen for alpha-1 antitrypsin deficiency", "FBC - anaemia can contribute to dyspnoea", "BNP for heart failure", "ABGs/VBGs for severity", "CXR"]
+        investigations: ["spirometry/PFTs", "genetic screen for alpha-1 antitrypsin deficiency", "FBC - anaemia can contribute to dyspnoea", "BNP for heart failure", "ABGs/VBGs for severity", "CXR"],
+        caseWriteUp: `
+            <div id = "caseWriteUp">
+                <header id = "caseWriteUpHeader">Chronic Obstructive Pulmonary Disease</header>
+                <div id = "definition">A common, preventable treatable disease, characterised by an abnormal inflammatory response in the lungs caused by significant exposure to noxious particles or gases, most commonly tobacco smoke. Variable combination of small airways disease (chronic bronchitis) and alveolar destruction (emphysema)</div>
+                <div id = "signs">
+                    <div class = "sign">
+                        Signs of airway obstruction:
+                        <ul>
+                            <li>wheeze</li>
+                            <li>tracheal tug + costal indrawing (large negative pleural pressures)</li>
+                            <li>Use of accessory muscles</li>
+                        </ul>
+                        <img src= "Pictures/COPDpatient.jpg">
+                    </div>
+                    <div class = "sign">
+                        Nicotine/tar staining on the fingers 
+                        <img src = "Pictures/nicotine.jpg">
+                    </div>
+                    <div class = "sign">
+                        Asterixis - flapping tremor with 2-3 second cycle (CO<sub>2</sub> retention, TYPE 2 RESPIRATORY FAILURE)
+                        <img src = "Pictures/asterixis.gif">
+                    </div>
+                    <div class = "sign">
+                        Barrel shaped chest 
+                        <img src = "Pictures/barrelchest.jpg">
+                    </div>
+                    <div class = "sign">
+                        Reduced air entry + Hoover's sign (inward movement of the lower chest during inspiration)
+                        <img src = "Pictures/hooverssign.gif">
+                    </div>
+                    <div class = "sign">
+                        COPD is the most common cause of cor pulmonale (right ventricular enlargement and failure secondary to pulmonary hypertension due to lung disease). COPD causes destruction of pulmonary vascular beds + hypoxia drives vasoconstriction. Reduced total cross-sectional area leads to increased resistance, pulmonary hypertension.
+                        Raised JVP, parasternal heave, palpable P2, signs of right sided heart failure.  
+                    </div>
+                    <div class = "sign">
+                        Hyper-resonance on percussion (due to alveolar destruction, gas-trapping, hyper-inflation of the lungs)
+                    </div>
+                    <div class = "sign">
+                        Diminished vesicular breathing. 
+                    </div>
+                </div>
+            </div>
+        `,
     },
     pulmonaryFibrosis : {
         history: ["exertional dyspnoea", "dry cough", "fatigue", "weight loss", "leg oedema"],
@@ -210,7 +253,10 @@ let answers = {
         auscultationOptions: ["bronchialbreathing1", "finecrackles1"],
         resonance: "increased vocal resonance",
         resonanceOptions: ["egophony1", "egophony2"],
-        investigations: []
+        investigations: [],
+        caseWriteUp: `
+            <div>test2</div>
+        `,
     },
     bronchiectasis : {
         history: ["severe, persistent very loose and productive cough", "expectoration of copious amounts of mucopurulent, sometimes fetid sputum", "dyspnoea", "haemoptysis", "pleurisy"],
@@ -220,7 +266,10 @@ let answers = {
         auscultation: ["coarse crackles"],
         auscultationOptions: ["coursecrackles1", "coursecrackles2"],
         resonance: "",
-        resonanceOptions: []
+        resonanceOptions: [],
+        caseWriteUp: `
+            <div>test3</div>
+         `,
     }
 };
 
@@ -252,18 +301,14 @@ function selectCase () {
 function submitAnswers() {
     document.getElementById("container").innerHTML = `
         <div id = "correct-answers">
-        asdf
+            
         </div>
         <div id = "your-answers">
         asdf
         </div>
         <button onclick = "window.location = ''" style = "cursor: pointer">Play Again</button>
     `;
-    document.getElementById("correct-answers").innerHTML = `
-        <div id = "caseDetails">
-            <header>${testCase}</header>
-        </div>
-    `;
+
     document.getElementById("your-answers").innerHTML = `
         <header id = "yourAnswersHeader">Score</header> 
         <div id = "yourAnswersSubmitPage">
@@ -273,6 +318,7 @@ function submitAnswers() {
             <span id = "finalScore">asdfasdf</span>
         </div>
     `;
+
     let score = 0;
     if (yourAnswers['percussion'] == answers[testCase]['percussion']) {
         document.getElementById("percussionAnswer").style.backgroundColor = "green";
@@ -311,17 +357,7 @@ function submitAnswers() {
     }
 
     document.getElementById("finalScore").innerHTML = "Score: " + score;
-}
 
-function caseSummary (caseName) {
-    switch (caseName){
-        case "COPD":
-            break;
-        case "pulmonaryFibrosis":
-            break;
-        case "bronchiectasis":
-            break;
-    }
-
+    document.getElementById("correct-answers").innerHTML = answers[testCase]['caseWriteUp'];
 
 }
