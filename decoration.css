@@ -130,5 +130,7 @@ html, body {
 
 #correctAnswers {
 }
-#yourAnswers {
+#yourAnswersSubmitPage {
+    display: flex;
+    flex-direction: column;
 }

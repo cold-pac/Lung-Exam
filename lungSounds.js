@@ -252,13 +252,76 @@ function selectCase () {
 function submitAnswers() {
     document.getElementById("container").innerHTML = `
         <div id = "correct-answers">
-            Correct answer + answers[testCase]
+        asdf
         </div>
         <div id = "your-answers">
-            Your answers + yourAnswers
+        asdf
         </div>
         <button onclick = "window.location = ''" style = "cursor: pointer">Play Again</button>
     `;
-    document.getElementById("correct-answers").innerHTML = 'Correct Answer: ' + testCase + "<br/>" + JSON.stringify(answers[testCase]);
-    document.getElementById("your-answers").innerHTML = 'Your Answers: ' + JSON.stringify(yourAnswers);
+    document.getElementById("correct-answers").innerHTML = `
+        <div id = "caseDetails">
+            <header>${testCase}</header>
+        </div>
+    `;
+    document.getElementById("your-answers").innerHTML = `
+        <header id = "yourAnswersHeader">Score</header> 
+        <div id = "yourAnswersSubmitPage">
+            <span class = "submitPage" id = "percussionAnswer">On percussion you heard ${yourAnswers['percussion']}</span>
+            <span class = "submitPage" id = "auscultationAnswer"><span id = "ausc1">On auscultation: ${yourAnswers['auscultation']['breathSounds'][0]}</span>, <span id = "ausc2">${yourAnswers['auscultation']['adventitiousSounds'][0]}</span></span>
+            <span class = "submitPage" id = "resonanceAnswer">You heard ${yourAnswers['resonance']}</span>
+            <span id = "finalScore">asdfasdf</span>
+        </div>
+    `;
+    let score = 0;
+    if (yourAnswers['percussion'] == answers[testCase]['percussion']) {
+        document.getElementById("percussionAnswer").style.backgroundColor = "green";
+        document.getElementById("percussionAnswer").style.color = "white";
+        score++;
+    } else {
+        document.getElementById("percussionAnswer").style.backgroundColor = "red";
+        document.getElementById("percussionAnswer").style.color = "white";
+    }
+
+    if (yourAnswers['auscultation']['breathSounds'][0] == answers[testCase]['auscultation'][0]) {
+        document.getElementById("ausc1").style.backgroundColor = "green";
+        document.getElementById("ausc1").style.color = "white";
+        score++;
+    } else {
+        document.getElementById("ausc1").style.backgroundColor = "red";
+        document.getElementById("ausc1").style.color = "white";
+    }
+
+    if (yourAnswers['auscultation']['adventitiousSounds'][0] == answers[testCase]['auscultation'][1]) {
+        document.getElementById("ausc2").style.backgroundColor = "green";
+        document.getElementById("ausc2").style.color = "white";
+        score++;
+    } else {
+        document.getElementById("ausc2").style.backgroundColor = "red";
+        document.getElementById("ausc2").style.color = "white";
+    }
+
+    if (yourAnswers['resonance'] == answers[testCase]['resonance']) {
+        document.getElementById("resonanceAnswer").style.backgroundColor = "green";
+        document.getElementById("resonanceAnswer").style.color = "white";
+        score++;
+    } else {
+        document.getElementById("resonanceAnswer").style.backgroundColor = "red";
+        document.getElementById("resonanceAnswer").style.color = "white";
+    }
+
+    document.getElementById("finalScore").innerHTML = "Score: " + score;
+}
+
+function caseSummary (caseName) {
+    switch (caseName){
+        case "COPD":
+            break;
+        case "pulmonaryFibrosis":
+            break;
+        case "bronchiectasis":
+            break;
+    }
+
+
 }
