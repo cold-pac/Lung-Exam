@@ -146,6 +146,7 @@ html, body {
 #caseWriteUp {
     height: 100%;
     width: 60%;
+    margin-top: 30px;
 }
 #caseWriteUp img {
     width: 300px;
@@ -160,6 +161,7 @@ html, body {
 }
 .sign:hover {
     background-color: yellow;
+    cursor: pointer;
 }
 #your-answers {
     display: flex;
