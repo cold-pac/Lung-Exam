@@ -201,7 +201,7 @@ let answers = {
         resonanceOptions: ["normalvocalresonance1"],
         investigations: ["spirometry/PFTs", "genetic screen for alpha-1 antitrypsin deficiency", "FBC - anaemia can contribute to dyspnoea", "BNP for heart failure", "ABGs/VBGs for severity", "CXR"],
         caseWriteUp: `
-                //Go nuts for these, these need to be really good notes
+                <!-- Go nuts for these, these need to be really good notes -->
             <div id = "caseWriteUp">
                 <header id = "caseWriteUpHeader">Chronic Obstructive Pulmonary Disease</header>
                 <div id = "definition">A common, preventable treatable disease, characterised by an abnormal inflammatory response in the lungs caused by significant exposure to noxious particles or gases, most commonly tobacco smoke. Variable combination of small airways disease (chronic bronchitis) and alveolar destruction (emphysema)</div>
@@ -258,7 +258,7 @@ let answers = {
         investigations: [],
         caseWriteUp: `
             <div id = "caseWriteUp">
-                <header id = "caseWriteUpHeader">Pulmonary Fibrosis (a.k.a cryptogenic fibrosing alveolitis)</header>
+                <header id = "caseWriteUpHeader">(Idiopathic) Pulmonary Fibrosis (a.k.a cryptogenic fibrosing alveolitis)</header>
                 <div id = "definition">The most common interstitial lung disease - characterised by inflammation and fibrosis of the lung interstitium. Worsening hypoxia and respiratory failure. Poor prognosis.</div>
                 <div id = "signs">
                     <div class = "sign">
@@ -275,6 +275,7 @@ let answers = {
                     </div>
                     <div class = "sign">
                         Reduced chest expansion on the affected side 
+                        <img src = "Pictures/chestexpansion.png">
                     </div>
                     <div class = "sign">
                         In late stages - peripheral oedema
@@ -289,6 +290,7 @@ let answers = {
                         Increased vocal resonance 
                     </div>
                     <div id = "investigations">
+                    Investigations:
                         <ul>
                             <li>CXR</li>
                             <li>Lung Function Tests i.e. spirometry - shows a restrictive pattern of lung disease (FER normal or high)</li>
@@ -312,36 +314,23 @@ let answers = {
         caseWriteUp: `
             <div id = "caseWriteUp">
                 <header id = "caseWriteUpHeader">Bronchiectasis</header>
-                <div id = "definition">Permanent dilation of the airways due to a combination of obstruction and infection</div>
+                <div id = "definition">Permanent dilation of the airways caused by destruction of smooth muscle and the supporting elastic tissue due to a combination of obstruction and chronic infection (two intertwined processes that both contribute to bronchiectasis and both may be initiator)</div>
                 <div id = "signs">
                     <div class = "sign">
-                        
+                        Severe, very persistent loose and productive cough with expectoration of large amounts of mucopurulent, sometimes fetid sputum. 
+                        <ul>
+                            <li>Dyspnoea and wheezing - 75% of cases</li>
+                            <li>Rhinosinusitis</li>
+                            <li>Haemoptysis - 56% of cases</li>
+                            <li>Pluerisy (a.k.a pleuritis) in 50% of cases! Inflammed pleural membranes sliding over each other, producing a sound like the creaking of a wooden ship!</li>
+                        </ul>
                     </div>
                     <div class = "sign">
-                        Nicotine/tar staining on the fingers 
-                        <img src = "Pictures/nicotine.jpg">
+                       Course crackles (pools of retained secretions, unpleasant gurgling quality) and rhonchi, wheezing. 
                     </div>
                     <div class = "sign">
-                        Asterixis - flapping tremor with 2-3 second cycle (CO<sub>2</sub> retention, TYPE 2 RESPIRATORY FAILURE)
-                        <img src = "Pictures/asterixis.gif">
-                    </div>
-                    <div class = "sign">
-                        Barrel shaped chest 
-                        <img src = "Pictures/barrelchest.jpg">
-                    </div>
-                    <div class = "sign">
-                        Reduced air entry + Hoover's sign (inward movement of the lower chest during inspiration)
-                        <img src = "Pictures/hooverssign.gif">
-                    </div>
-                    <div class = "sign">
-                        COPD is the most common cause of cor pulmonale (right ventricular enlargement and failure secondary to pulmonary hypertension due to lung disease). COPD causes destruction of pulmonary vascular beds + hypoxia drives vasoconstriction. Reduced total cross-sectional area leads to increased resistance, pulmonary hypertension.
-                        Raised JVP, parasternal heave, palpable P2, signs of right sided heart failure.  
-                    </div>
-                    <div class = "sign">
-                        Hyper-resonance on percussion (due to alveolar destruction, gas-trapping, hyper-inflation of the lungs)
-                    </div>
-                    <div class = "sign">
-                        Diminished vesicular breathing. 
+                        Clubbing in 3% of cases
+                        <img src = "Pictures/clubbing.jpg">
                     </div>
                     <div id = "your-answers"></div>
                 </div>
@@ -375,6 +364,7 @@ function selectCase () {
 
 }
 
+let score;
 function submitAnswers() {
     document.body.innerHTML = `
         <div id = "correct-answers">
@@ -385,9 +375,9 @@ function submitAnswers() {
     document.getElementById("correct-answers").innerHTML = answers[testCase]['caseWriteUp'];
 
     document.getElementById("your-answers").innerHTML = `
-        <header id = "yourAnswersHeader">Score</header> 
+        <header id = "yourAnswersHeader">Your answers: </header> 
         <div id = "yourAnswersSubmitPage">
-            <span class = "submitPage" id = "percussionAnswer">On percussion you heard ${yourAnswers['percussion']}</span>
+            <span class = "submitPage" id = "percussionAnswer">You thought the patient was ${yourAnswers['percussion']} to percussion</span>
             <span class = "submitPage" id = "auscultationAnswer"><span id = "ausc1">On auscultation: ${yourAnswers['auscultation']['breathSounds'][0]}</span>, <span id = "ausc2">${yourAnswers['auscultation']['adventitiousSounds'][0]}</span></span>
             <span class = "submitPage" id = "resonanceAnswer">You heard ${yourAnswers['resonance']}</span>
             <span id = "finalScore">asdfasdf</span>
@@ -395,9 +385,9 @@ function submitAnswers() {
         <button onclick = "window.location = ''" style = "cursor: pointer">Play Again</button>
     `;
 
-    document.getElementById("finalScore").innerHTML = "Score: " + score;
 
-    let score = 0;
+
+    score = 0;
     if (yourAnswers['percussion'] == answers[testCase]['percussion']) {
         document.getElementById("percussionAnswer").style.backgroundColor = "green";
         document.getElementById("percussionAnswer").style.color = "white";
@@ -434,4 +424,5 @@ function submitAnswers() {
         document.getElementById("resonanceAnswer").style.color = "white";
     }
 
+    document.getElementById("finalScore").innerHTML = "Score: " + score;
 }

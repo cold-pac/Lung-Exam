@@ -145,18 +145,18 @@ html, body {
 }
 #caseWriteUp {
     height: 100%;
-    width: 80%;
+    width: 60%;
 }
 #caseWriteUp img {
-    width: 600px;
+    width: 300px;
     display: block;
 }
 .sign {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px;
-    padding: 100px;
+    margin: 2px;
+    padding: 20px;
 }
 .sign:hover {
     background-color: yellow;
@@ -165,4 +165,6 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 30px;
+    border: chocolate 3px solid;
 }
