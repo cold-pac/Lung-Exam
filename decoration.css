@@ -6,6 +6,10 @@ html, body {
     font-family: Monospace;
     margin: 0;
 }
+#start-menu {
+    display: flex;
+    flex-direction: column;
+}
 .\.soundButton{
     height: 30px;
     width: 200px;
