@@ -156,6 +156,7 @@ html, body {
     flex-direction: column;
     align-items: center;
     margin: 20px;
+    padding: 100px;
 }
 .sign:hover {
     background-color: yellow;

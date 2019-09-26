@@ -201,6 +201,7 @@ let answers = {
         resonanceOptions: ["normalvocalresonance1"],
         investigations: ["spirometry/PFTs", "genetic screen for alpha-1 antitrypsin deficiency", "FBC - anaemia can contribute to dyspnoea", "BNP for heart failure", "ABGs/VBGs for severity", "CXR"],
         caseWriteUp: `
+                //Go nuts for these, these need to be really good notes
             <div id = "caseWriteUp">
                 <header id = "caseWriteUpHeader">Chronic Obstructive Pulmonary Disease</header>
                 <div id = "definition">A common, preventable treatable disease, characterised by an abnormal inflammatory response in the lungs caused by significant exposure to noxious particles or gases, most commonly tobacco smoke. Variable combination of small airways disease (chronic bronchitis) and alveolar destruction (emphysema)</div>
@@ -258,17 +259,19 @@ let answers = {
         caseWriteUp: `
             <div id = "caseWriteUp">
                 <header id = "caseWriteUpHeader">Pulmonary Fibrosis (a.k.a cryptogenic fibrosing alveolitis)</header>
-                <div id = "definition">An interstitial lung disease - characterised by inflammation and fibrosis of the lung interstitium</div>
+                <div id = "definition">The most common interstitial lung disease - characterised by inflammation and fibrosis of the lung interstitium. Worsening hypoxia and respiratory failure. Poor prognosis.</div>
                 <div id = "signs">
                     <div class = "sign">
                         cyanosis 
-                        <img src= "Pictures/.jpg">
+                        <img src= "Pictures/cyanosis.jpg">
                     </div>
                     <div class = "sign">
                         clubbing
+                        <img src = "Pictures/clubbing.jpg">
                     </div>
                     <div class = "sign">
                         tracheal deviation towards the affected side 
+                        <img src = "Pictures/trachealshift.jpg">
                     </div>
                     <div class = "sign">
                         Reduced chest expansion on the affected side 
@@ -280,10 +283,17 @@ let answers = {
                         Dull to percussion 
                     </div>
                     <div class = "sign">
-                        Bronchial breathing + fine crackles 
+                        Bronchial breathing + fine end-inspiratory crackles 
                     </div>
                     <div class = "sign">
                         Increased vocal resonance 
+                    </div>
+                    <div id = "investigations">
+                        <ul>
+                            <li>CXR</li>
+                            <li>Lung Function Tests i.e. spirometry - shows a restrictive pattern of lung disease (FER normal or high)</li>
+                            <li>Lung biopsy</li>
+                        </ul>
                     </div>
                     <div id = "your-answers"></div>
                 </div>
