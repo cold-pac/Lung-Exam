@@ -12,7 +12,10 @@
         <div>
             Lung Exam Practice
         </div>
-        <button style = "cursor: pointer" onclick = "startTest(); selectCase();">Start</button>
+        <div id = "start-menu">
+            <button style = "cursor: pointer" onclick = "startTest(); selectCase();">Start</button>
+            <button style = "cursor: pointer" onclick = "window.location = 'library.html'">Sound library</button>
+        </div>
     </div>
 </div>
 <!-- percussion notes -->
@@ -86,11 +89,11 @@
 </audio>
 
 <!-- course crackles -->
-<audio id = "coursecrackles1">
-    <source src = "Assets/coursecrackles1.mp3">
+<audio id = "coarsecrackles1">
+    <source src = "Assets/coarsecrackles1.mp3">
 </audio>
-<audio id = "coursecrackles2">
-    <source src = "Assets/coursecrackles2.mp3">
+<audio id = "coarsecrackles2">
+    <source src = "Assets/coarsecrackles2.mp3">
 </audio>
 
 <!-- pleural rub -->
