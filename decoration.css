@@ -28,6 +28,7 @@ html, body {
     background-color: white;
 //background: yellow;
     width: 50vw;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,7 +36,7 @@ html, body {
     border-style: solid;
     border-color: rgba(209, 207, 211, 0.92);
     border-width: 5px;
-    //overflow: hidden;
+    overflow: hidden;
 }
 #container span {
     width: 100%;
@@ -128,8 +129,6 @@ html, body {
     padding: 5px;
 }
 
-#correctAnswers {
-}
 #yourAnswersSubmitPage {
     display: flex;
     flex-direction: column;
@@ -140,13 +139,16 @@ html, body {
 }
 #correct-answers {
     height: 100%;
-    margin: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #caseWriteUp {
     height: 100%;
+    width: 80%;
 }
 #caseWriteUp img {
-    width: 100px;
+    width: 600px;
     display: block;
 }
 .sign {
@@ -154,4 +156,12 @@ html, body {
     flex-direction: column;
     align-items: center;
     margin: 20px;
+}
+.sign:hover {
+    background-color: yellow;
+}
+#your-answers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

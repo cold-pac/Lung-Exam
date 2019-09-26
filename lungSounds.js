@@ -219,6 +219,99 @@ let answers = {
                         <img src = "Pictures/nicotine.jpg">
                     </div>
                     <div class = "sign">
+                        <span>Asterixis - flapping tremor with 2-3 second cycle (CO<sub>2</sub> retention, TYPE 2 RESPIRATORY FAILURE)</span>
+                        <img src = "Pictures/asterixis.gif">
+                    </div>
+                    <div class = "sign">
+                        Barrel shaped chest 
+                        <img src = "Pictures/barrelchest.jpg">
+                    </div>
+                    <div class = "sign">
+                        Reduced air entry + Hoover's sign (inward movement of the lower chest during inspiration)
+                        <img src = "Pictures/hooverssign.gif">
+                    </div>
+                    <div class = "sign">
+                        COPD is the most common cause of cor pulmonale (right ventricular enlargement and failure secondary to pulmonary hypertension due to lung disease). COPD causes destruction of pulmonary vascular beds + hypoxia drives vasoconstriction. Reduced total cross-sectional area leads to increased resistance, pulmonary hypertension.
+                        Raised JVP, parasternal heave, palpable P2, signs of right sided heart failure.  
+                    </div>
+                    <div class = "sign">
+                        Hyper-resonance on percussion (due to alveolar destruction, gas-trapping, hyper-inflation of the lungs)
+                    </div>
+                    <div class = "sign">
+                        Diminished vesicular breathing. 
+                    </div>
+                    <div id = "your-answers"></div>
+                </div>
+            </div>
+        `,
+    },
+    pulmonaryFibrosis : {
+        history: ["exertional dyspnoea", "dry cough", "fatigue", "weight loss", "leg oedema"],
+        signs: ["central cyanosis", "clubbing", "tracheal deviation towards affected side", "reduced chest expansion", "pedal oedema"],
+        percussion: "dull",
+        percussionOptions: ["dull1"],
+        auscultation: ["bronchial breathing", "fine crackles"],
+        auscultationOptions: ["bronchialbreathing1", "finecrackles1"],
+        resonance: "increased vocal resonance",
+        resonanceOptions: ["egophony1", "egophony2"],
+        investigations: [],
+        caseWriteUp: `
+            <div id = "caseWriteUp">
+                <header id = "caseWriteUpHeader">Pulmonary Fibrosis (a.k.a cryptogenic fibrosing alveolitis)</header>
+                <div id = "definition">An interstitial lung disease - characterised by inflammation and fibrosis of the lung interstitium</div>
+                <div id = "signs">
+                    <div class = "sign">
+                        cyanosis 
+                        <img src= "Pictures/.jpg">
+                    </div>
+                    <div class = "sign">
+                        clubbing
+                    </div>
+                    <div class = "sign">
+                        tracheal deviation towards the affected side 
+                    </div>
+                    <div class = "sign">
+                        Reduced chest expansion on the affected side 
+                    </div>
+                    <div class = "sign">
+                        In late stages - peripheral oedema
+                    </div>
+                    <div class = "sign">
+                        Dull to percussion 
+                    </div>
+                    <div class = "sign">
+                        Bronchial breathing + fine crackles 
+                    </div>
+                    <div class = "sign">
+                        Increased vocal resonance 
+                    </div>
+                    <div id = "your-answers"></div>
+                </div>
+            </div>
+        `,
+    },
+    bronchiectasis : {
+        history: ["severe, persistent very loose and productive cough", "expectoration of copious amounts of mucopurulent, sometimes fetid sputum", "dyspnoea", "haemoptysis", "pleurisy"],
+        signs : ["clubbing"],
+        percussion: "",
+        percussionOptions: [],
+        auscultation: ["coarse crackles"],
+        auscultationOptions: ["coursecrackles1", "coursecrackles2"],
+        resonance: "",
+        resonanceOptions: [],
+        caseWriteUp: `
+            <div id = "caseWriteUp">
+                <header id = "caseWriteUpHeader">Bronchiectasis</header>
+                <div id = "definition">Permanent dilation of the airways due to a combination of obstruction and infection</div>
+                <div id = "signs">
+                    <div class = "sign">
+                        
+                    </div>
+                    <div class = "sign">
+                        Nicotine/tar staining on the fingers 
+                        <img src = "Pictures/nicotine.jpg">
+                    </div>
+                    <div class = "sign">
                         Asterixis - flapping tremor with 2-3 second cycle (CO<sub>2</sub> retention, TYPE 2 RESPIRATORY FAILURE)
                         <img src = "Pictures/asterixis.gif">
                     </div>
@@ -240,36 +333,10 @@ let answers = {
                     <div class = "sign">
                         Diminished vesicular breathing. 
                     </div>
+                    <div id = "your-answers"></div>
                 </div>
             </div>
         `,
-    },
-    pulmonaryFibrosis : {
-        history: ["exertional dyspnoea", "dry cough", "fatigue", "weight loss", "leg oedema"],
-        signs: ["central cyanosis", "clubbing", "tracheal deviation towards affected side", "reduced chest expansion", "pedal oedema"],
-        percussion: "dull",
-        percussionOptions: ["dull1"],
-        auscultation: ["bronchial breathing", "fine crackles"],
-        auscultationOptions: ["bronchialbreathing1", "finecrackles1"],
-        resonance: "increased vocal resonance",
-        resonanceOptions: ["egophony1", "egophony2"],
-        investigations: [],
-        caseWriteUp: `
-            <div>test2</div>
-        `,
-    },
-    bronchiectasis : {
-        history: ["severe, persistent very loose and productive cough", "expectoration of copious amounts of mucopurulent, sometimes fetid sputum", "dyspnoea", "haemoptysis", "pleurisy"],
-        signs : ["clubbing"],
-        percussion: "",
-        percussionOptions: [],
-        auscultation: ["coarse crackles"],
-        auscultationOptions: ["coursecrackles1", "coursecrackles2"],
-        resonance: "",
-        resonanceOptions: [],
-        caseWriteUp: `
-            <div>test3</div>
-         `,
     }
 };
 
@@ -299,15 +366,13 @@ function selectCase () {
 }
 
 function submitAnswers() {
-    document.getElementById("container").innerHTML = `
+    document.body.innerHTML = `
         <div id = "correct-answers">
             
         </div>
-        <div id = "your-answers">
-        asdf
-        </div>
-        <button onclick = "window.location = ''" style = "cursor: pointer">Play Again</button>
     `;
+
+    document.getElementById("correct-answers").innerHTML = answers[testCase]['caseWriteUp'];
 
     document.getElementById("your-answers").innerHTML = `
         <header id = "yourAnswersHeader">Score</header> 
@@ -317,7 +382,10 @@ function submitAnswers() {
             <span class = "submitPage" id = "resonanceAnswer">You heard ${yourAnswers['resonance']}</span>
             <span id = "finalScore">asdfasdf</span>
         </div>
+        <button onclick = "window.location = ''" style = "cursor: pointer">Play Again</button>
     `;
+
+    document.getElementById("finalScore").innerHTML = "Score: " + score;
 
     let score = 0;
     if (yourAnswers['percussion'] == answers[testCase]['percussion']) {
@@ -355,9 +423,5 @@ function submitAnswers() {
         document.getElementById("resonanceAnswer").style.backgroundColor = "red";
         document.getElementById("resonanceAnswer").style.color = "white";
     }
-
-    document.getElementById("finalScore").innerHTML = "Score: " + score;
-
-    document.getElementById("correct-answers").innerHTML = answers[testCase]['caseWriteUp'];
 
 }
