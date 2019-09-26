@@ -4,6 +4,7 @@ html, body {
     width: 100%;
     font-size: 1.04em;
     font-family: Monospace;
+    margin: 0;
 }
 .\.soundButton{
     height: 30px;
