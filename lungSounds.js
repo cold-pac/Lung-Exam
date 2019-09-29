@@ -14,7 +14,7 @@ function startTest () {
         </span>
         <span id = "yourAnswersContainer">
             <span id = "yourAnswers">
-                Your answers will go here :)
+                Your answers will go here
             </span>
             <span id = "buttonContainer">
                 <button onclick = "submitAnswers()" id = "submitButton">Submit Answers</button>
@@ -340,6 +340,12 @@ let answers = {
 };
 
 
+function quiet(){
+    Array.from(document.getElementsByTagName("audio")).forEach(function(elem){
+        elem.pause();
+    });
+}
+
 //currently, every time you click it it picks one of the options at random - happy accident? should change this to = variable so it stays the same every click?
 let testCase;
 function selectCase () {
@@ -350,15 +356,18 @@ function selectCase () {
 
     document.getElementById("percussion").addEventListener("click", function() {
         //console.log(answers[testCase]["percussionOptions"][Math.floor(Math.random()*answers[testCase]["percussionOptions"].length)]);
+        quiet();
         document.getElementById(answers[testCase]["percussionOptions"][Math.floor(Math.random()*answers[testCase]["percussionOptions"].length)]).play();
     });
 
     document.getElementById("auscultation").addEventListener("click", function() {
         //console.log(answers[testCase]["auscultationOptions"]);
+        quiet();
         document.getElementById(answers[testCase]["auscultationOptions"][Math.floor(Math.random()*answers[testCase]["auscultationOptions"].length)]).play();
     });
 
     document.getElementById("resonance").addEventListener("click", function() {
+        quiet();
         document.getElementById(answers[testCase]["resonanceOptions"][Math.floor(Math.random()*answers[testCase]["resonanceOptions"].length)]).play();
     });
 
@@ -377,9 +386,9 @@ function submitAnswers() {
     document.getElementById("your-answers").innerHTML = `
         <header id = "yourAnswersHeader">Your answers: </header> 
         <div id = "yourAnswersSubmitPage">
-            <span class = "submitPage" id = "percussionAnswer">You thought the patient was ${yourAnswers['percussion']} to percussion</span>
-            <span class = "submitPage" id = "auscultationAnswer"><span id = "ausc1">On auscultation: ${yourAnswers['auscultation']['breathSounds'][0]}</span>, <span id = "ausc2">${yourAnswers['auscultation']['adventitiousSounds'][0]}</span></span>
-            <span class = "submitPage" id = "resonanceAnswer">You heard ${yourAnswers['resonance']}</span>
+            <span class = "submitPage">You thought the patient's lung fields were <span id = "percussionAnswer">${yourAnswers['percussion']}</span> to percussion</span>
+            <span class = "submitPage" id = "auscultationAnswer">On auscultation:<span id = "ausc1">${yourAnswers['auscultation']['breathSounds'][0]}</span>, <span id = "ausc2">${yourAnswers['auscultation']['adventitiousSounds'][0]}</span></span>
+            <span class = "submitPage"> You heard <span id = "resonanceAnswer" ${yourAnswers['resonance']}</span> </span> <br/>
             <span id = "finalScore">asdfasdf</span>
         </div>
         <button onclick = "window.location = ''" style = "cursor: pointer">Play Again</button>

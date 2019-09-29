@@ -9,6 +9,8 @@ html, body {
 #start-menu {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 50px;
 }
 .\.soundButton{
     height: 30px;
@@ -124,14 +126,7 @@ html, body {
     justify-self: end;
 }
 #submitButton {
-    background-color: firebrick;
-    color: white;
-    font-family: Ariel;
-    font-weight: 300;
-    border: none;
     cursor: pointer;
-    font-size: 15px;
-    padding: 5px;
 }
 
 #yourAnswersSubmitPage {
@@ -174,4 +169,12 @@ html, body {
     align-items: center;
     margin: 30px;
     border: chocolate 3px solid;
+}
+@media(orientation: portrait) {
+    #container {
+        width: 100vw;
+    }
+    #caseWriteUp {
+        width: 100%;
+    }
 }
