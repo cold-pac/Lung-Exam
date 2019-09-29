@@ -1,5 +1,9 @@
 //TODO: clean this code up when you've finished
+let starterHTML = document.body.innerHTML;
 function startTest () {
+    //temporary:
+     document.body.innerHTML = starterHTML;
+
     document.getElementById("container").innerHTML = `
         <span id = "case">
             <span id = "case-hitter">Presenting Complaint + signs: Thinking of putting history here. Would that work? Maybe I could generate one randomly. Hm. Can put in signs chosen at random, based on the probability they'd be in an actual patient. e.g. 30% chance bronchiectasis will have clubbing</span>
@@ -187,7 +191,7 @@ function addClickChange () {
 
 
 let possibleConditions;
-possibleConditions = ["COPD", "pulmonaryFibrosis", "bronchiectasis"];
+possibleConditions = ["COPD", "pulmonaryFibrosis", "bronchiectasis", "pleuralEffusion"];
 
 let answers = {
     COPD : {
@@ -336,7 +340,45 @@ let answers = {
                 </div>
             </div>
         `,
+    },
+    pleuralEffusion : {
+        history: [],
+        signs : ["full intercostal spaces (on the affected side)", "unable to feel the apex beat", "decreased chest expansion (on the affected side)"],
+        percussion: "stony",
+        percussionOptions: ["stonydullness1"],
+        auscultation: ["diminished vesicular breath sounds"],
+        auscultationOptions: ["diminishedvesicularbreathing1"],
+        resonance: "reduced vocal resonance",
+        resonanceOptions: ["reducedvocalresonance1"],
+        caseWriteUp: `
+            <div id = "caseWriteUp">
+                <header id = "caseWriteUpHeader">Pleural Effusion</header>
+                <div id = "definition">Fluid in the space between the lungs and the chest wall</div>
+                <div id = "signs">
+                    <div class = "sign">
+                        Full intercostal spaces 
+                    </div>
+                    <div class = "sign">
+                       May not be able to feel/see the apex beat 
+                    </div>
+                    <div class = "sign">
+                        Decreased chest expansion 
+                    </div>
+                    <div class = "sign">
+                       Stony dullness on percussion
+                    </div>
+                    <div class = "sign">
+                        Decreased breath sounds 
+                    </div>
+                    <div class = "sign">
+                        Decreased vocal resonance/vocal fremitus (may get egophony/increased VR and VF on the upper border of the effusion)
+                    </div>
+                    <div id = "your-answers"></div>
+                </div>
+            </div>
+        `,
     }
+
 };
 
 
@@ -388,10 +430,10 @@ function submitAnswers() {
         <div id = "yourAnswersSubmitPage">
             <span class = "submitPage">You thought the patient's lung fields were <span id = "percussionAnswer">${yourAnswers['percussion']}</span> to percussion</span>
             <span class = "submitPage" id = "auscultationAnswer">On auscultation:<span id = "ausc1">${yourAnswers['auscultation']['breathSounds'][0]}</span>, <span id = "ausc2">${yourAnswers['auscultation']['adventitiousSounds'][0]}</span></span>
-            <span class = "submitPage"> You heard <span id = "resonanceAnswer" ${yourAnswers['resonance']}</span> </span> <br/>
+            <span class = "submitPage"> You heard <span id = "resonanceAnswer"> ${yourAnswers['resonance']}</span> </span>
             <span id = "finalScore">asdfasdf</span>
         </div>
-        <button onclick = "window.location = ''" style = "cursor: pointer">Play Again</button>
+        <button onclick = "startTest(); selectCase();" style = "cursor: pointer">Play Again</button>
     `;
 
 
