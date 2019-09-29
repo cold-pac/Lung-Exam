@@ -70,7 +70,7 @@ function changeAnswers (element) {
                             <li id = "wheeze" class = "multiChoice">Wheeze</li>
                             <li id = "stridor" class = "multiChoice">Stridor</li>
                             <li id = "fine crackles" class = "multiChoice">Fine crackles</li>
-                            <li id = "coarse crackles" class = "multiChoice">Course crackles</li>
+                            <li id = "coarse crackles" class = "multiChoice">Coarse crackles</li>
                             <li id = "pleural friction rub" class = "multiChoice">Pleural friction rub</li>
                          </ol>
                      </span>
@@ -191,7 +191,7 @@ function addClickChange () {
 
 
 let possibleConditions;
-possibleConditions = ["COPD", "pulmonaryFibrosis", "bronchiectasis", "pleuralEffusion"];
+possibleConditions = ["COPD", "pulmonaryFibrosis", "bronchiectasis", "pleuralEffusion", "pneumothorax", "atelectasis"];
 
 let answers = {
     COPD : {
@@ -312,7 +312,7 @@ let answers = {
         percussion: "",
         percussionOptions: [],
         auscultation: ["coarse crackles"],
-        auscultationOptions: ["coursecrackles1", "coursecrackles2"],
+        auscultationOptions: ["coarsecrackles1", "coarsecrackles2"],
         resonance: "",
         resonanceOptions: [],
         caseWriteUp: `
@@ -346,7 +346,7 @@ let answers = {
         signs : ["full intercostal spaces (on the affected side)", "unable to feel the apex beat", "decreased chest expansion (on the affected side)"],
         percussion: "stony",
         percussionOptions: ["stonydullness1"],
-        auscultation: ["diminished vesicular breath sounds"],
+        auscultation: ["diminished vesicular breath sounds", "no adventitious sounds"],
         auscultationOptions: ["diminishedvesicularbreathing1"],
         resonance: "reduced vocal resonance",
         resonanceOptions: ["reducedvocalresonance1"],
@@ -377,8 +377,62 @@ let answers = {
                 </div>
             </div>
         `,
+    },
+    pneumothorax : {
+        history: [],
+        signs : ["ON THE AFFECTED SIDE: ", "diminished chest movements (inspection + palpation)"],
+        percussion: "hyperresonance",
+        percussionOptions: ["resonant1"],
+        auscultation: ["diminished vesicular breathing", "no adventitious sounds"],
+        auscultationOptions: ["diminishedvesicularbreathing1"],
+        resonance: "reduced vocal resonance",
+        resonanceOptions: ["reducedvocalresonance1"],
+        caseWriteUp: `
+            <div id = "caseWriteUp">
+                <header id = "caseWriteUpHeader">Pneumothorax</header>
+                <div id = "definition">Air between the lungs and the chest wall</div>
+                <div id = "signs">
+                    <div class = "sign">
+                          diminished chest movements (inspection + palpation) 
+                    </div>
+                    <div class = "sign">
+                       tympanic note = drum-like/hyperresonance on percussion
+                    </div>
+                    <div class = "sign">
+                        ⇒ diminished/decreased breath sounds (cushion of air between the lung sound and your stethoscope)
+                    </div>
+                    <div class = "sign">
+                       ⇒ diminished/decreased TVF/VR (on the affected side)
+                    </div>
+                    <div id = "your-answers"></div>
+                </div>
+            </div>
+        `,
+    },
+    atelectasis : {
+        history: [],
+        signs : ["ON THE AFFECTED SIDE: ", "decreased chest expansion"],
+        percussion: "dull",
+        percussionOptions: ["dull1"],
+        auscultation: ["diminished vesicular breathing", "no adventitious sounds"],
+        auscultationOptions: ["diminishedvesicularbreathing1"],
+        resonance: "",
+        resonanceOptions: [""],
+        caseWriteUp: `
+            <div id = "caseWriteUp">
+                <header id = "caseWriteUpHeader">Atelectasis</header>
+                <div id = "definition">Lung collapse</div>
+                <div id = "signs">
+                    <div class = "sign">
+                            ⇒ decreased chest expansion
+                            ⇒ dull to percussion
+                            ⇒ diminished or absent breath sounds
+                    </div>
+                    <div id = "your-answers"></div>
+                </div>
+            </div>
+        `,
     }
-
 };
 
 
@@ -433,7 +487,7 @@ function submitAnswers() {
             <span class = "submitPage"> You heard <span id = "resonanceAnswer"> ${yourAnswers['resonance']}</span> </span>
             <span id = "finalScore">asdfasdf</span>
         </div>
-        <button onclick = "startTest(); selectCase();" style = "cursor: pointer">Play Again</button>
+        <button onclick = "yourAnswers = {'auscultation':{breathSounds: [], adventitiousSounds: []}}; startTest(); selectCase();" style = "cursor: pointer">Play Again</button>
     `;
 
 
