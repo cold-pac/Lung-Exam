@@ -190,8 +190,8 @@ function addClickChange () {
 // make an object constructor function that creates the "answer object"? or separate objects for every case? or... both?
 
 
-let possibleConditions;
-possibleConditions = ["COPD", "pulmonaryFibrosis", "bronchiectasis", "pleuralEffusion", "pneumothorax", "atelectasis"];
+/* let possibleConditions;
+possibleConditions = ["COPD", "pulmonaryFibrosis", "bronchiectasis", "pleuralEffusion", "pneumothorax", "atelectasis"]; */ 
 
 let answers = {
     COPD : {
@@ -245,8 +245,8 @@ let answers = {
                     <div class = "sign">
                         Diminished vesicular breathing. Wheeze (may only come out on forced expiration). 
                     </div>
-                    <div onload = "this.innerHTML = answer.COPD.investigations.join()" class = "sign" id = "investigations">
-                   
+                    <div class = "sign" id = "investigations">
+                        "spirometry/PFTs", "genetic screen for alpha-1 antitrypsin deficiency", "FBC - anaemia can contribute to dyspnoea", "BNP for heart failure", "ABGs/VBGs for severity", "CXR"
                     </div>
                     <div id = "your-answers"></div>
                 </div>
@@ -448,14 +448,10 @@ function quiet(){
 //currently, every time you click it it picks one of the options at random - happy accident? should change this to = variable so it stays the same every click?
 let testCase, testCaseAlt;
 function selectCase () {
-    testCase = possibleConditions[Math.floor(Math.random()*possibleConditions.length)];
+    testCase = Object.keys(answers);
+    testCase = testCase[Math.floor(Math.random()*testCaseAlt.length)];
     console.log(testCase);
     console.log(answers[testCase]);
-    
-    testCaseAlt = Object.keys(answers);
-    testCaseAlt = testCaseAlt[Math.floor(Math.random()*testCaseAlt.length)];
-    console.log(testCaseAlt); 
-    
     
     document.getElementById("case-hitter").innerHTML = "history: " + answers[testCase]["history"].join(", ") + "<br/><br/>" + "signs: " + answers[testCase]["signs"].join(", ");
 
