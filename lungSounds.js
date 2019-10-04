@@ -446,10 +446,10 @@ function quiet(){
 }
 
 //currently, every time you click it it picks one of the options at random - happy accident? should change this to = variable so it stays the same every click?
-let testCase, testCaseAlt;
+let testCase;
 function selectCase () {
     testCase = Object.keys(answers);
-    testCase = testCase[Math.floor(Math.random()*testCaseAlt.length)];
+    testCase = testCase[Math.floor(Math.random()*testCase.length)];
     console.log(testCase);
     console.log(answers[testCase]);
     
