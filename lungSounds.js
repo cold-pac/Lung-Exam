@@ -386,7 +386,7 @@ let answers = {
         signs : ["ON THE AFFECTED SIDE: ", "diminished chest movements (inspection + palpation)"],
         percussion: "hyperresonance",
         percussionOptions: ["resonant1"],
-        auscultation: ["diminished vesicular breathing", "no adventitious sounds"],
+        auscultation: ["diminished vesicular breath sounds", "no adventitious sounds"],
         auscultationOptions: ["diminishedvesicularbreathing1"],
         resonance: "reduced vocal resonance",
         resonanceOptions: ["reducedvocalresonance1"],
@@ -417,7 +417,7 @@ let answers = {
         signs : ["ON THE AFFECTED SIDE: ", "decreased chest expansion"],
         percussion: "dull",
         percussionOptions: ["dull1"],
-        auscultation: ["diminished vesicular breathing", "no adventitious sounds"],
+        auscultation: ["diminished vesicular breath sounds", "no adventitious sounds"],
         auscultationOptions: ["diminishedvesicularbreathing1"],
         resonance: "",
         resonanceOptions: [""],
@@ -427,8 +427,8 @@ let answers = {
                 <div id = "definition">Lung collapse</div>
                 <div id = "signs">
                     <div class = "sign">
-                            ⇒ decreased chest expansion
-                            ⇒ dull to percussion
+                            ⇒ decreased chest expansion <br/> 
+                            ⇒ dull to percussion   <br/> 
                             ⇒ diminished or absent breath sounds
                     </div>
                     <div id = "your-answers"></div>
