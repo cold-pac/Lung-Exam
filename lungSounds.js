@@ -245,8 +245,8 @@ let answers = {
                     <div class = "sign">
                         Diminished vesicular breathing. Wheeze (may only come out on forced expiration). 
                     </div>
-                    <div class = "sign" id = "investigations">
-                        ${answers.COPD.investigations}
+                    <div onload = "this.innerHTML = answer.COPD.investigations.join()" class = "sign" id = "investigations">
+                   
                     </div>
                     <div id = "your-answers"></div>
                 </div>
