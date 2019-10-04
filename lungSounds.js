@@ -246,7 +246,7 @@ let answers = {
                         Diminished vesicular breathing. Wheeze (may only come out on forced expiration). 
                     </div>
                     <div class = "sign" id = "investigations">
-                        ${this.investigations}
+                        ${answers.COPD.investigations}
                     </div>
                     <div id = "your-answers"></div>
                 </div>
@@ -446,11 +446,17 @@ function quiet(){
 }
 
 //currently, every time you click it it picks one of the options at random - happy accident? should change this to = variable so it stays the same every click?
-let testCase;
+let testCase, testCaseAlt;
 function selectCase () {
     testCase = possibleConditions[Math.floor(Math.random()*possibleConditions.length)];
     console.log(testCase);
     console.log(answers[testCase]);
+    
+    testCaseAlt = Object.keys(answers);
+    testCaseAlt = testCaseAlt[Math.floor(Math.random()*testCaseAlt.length)];
+    console.log(testCaseAlt); 
+    
+    
     document.getElementById("case-hitter").innerHTML = "history: " + answers[testCase]["history"].join(", ") + "<br/><br/>" + "signs: " + answers[testCase]["signs"].join(", ");
 
     document.getElementById("percussion").addEventListener("click", function() {
