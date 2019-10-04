@@ -39,146 +39,188 @@
 </head>
 <body>
 
-<div id = "centerThis">
-    <table>
-        <tr>
-            <td>
-                <button onclick = "quiet(); document.getElementById('vesicularbreathing1').play()">Normal Vesicular Breathing</button>
-            </td>
-            <td>
-                <button onclick = "quiet(); document.getElementById('diminishedvesicularbreathing1').play()">Diminished Vesicular Breathing</button>
-            </td>
-            <td>
-                <button onclick = "quiet(); document.getElementById('bronchialbreathing1').play()">Bronchial Breathing</button>
-                <br/>
-                <button onclick = "quiet(); document.getElementById('bronchialbreathing2').play()">Bronchial Breathing 2</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button onclick = "quiet(); document.getElementById('finecrackles1').play()">Fine Crackles</button>
-            </td>
-            <td>
-                <button onclick = "quiet(); document.getElementById('coarsecrackles2').play()">Coarse crackles</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button onclick = "quiet(); document.getElementById('stridor1').play()">Stridor</button>
-                <br />
-                <button onclick = "quiet(); document.getElementById('stridor2').play()">Stridor 2</button>
-            </td>
-            <td>
-                <button onclick = "quiet(); document.getElementById('expiratorywheeze1').play()">Wheeze</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button onclick = "quiet(); document.getElementById('pleuralrub1').play()">Pleural Friction Rub</button>
-                <br />
-                <button onclick = "quiet(); document.getElementById('pleuralrub2').play()">Pleural Friction Rub 2</button>
-            </td>
-        </tr>
-    </table>
+    <div id = "centerThis">
+        <table>
+            <tr>
+                <td>
+                    <button onclick = "quiet(); document.getElementById('vesicularbreathing1').play()">Normal Vesicular Breathing</button>
+                </td>
+                <td>
+                    <button onclick = "quiet(); document.getElementById('diminishedvesicularbreathing1').play()">Diminished Vesicular Breathing</button>
+                </td>
+                <td>
+                    <button onclick = "quiet(); document.getElementById('bronchialbreathing1').play()">Bronchial Breathing</button>
+                    <br/>
+                    <button onclick = "quiet(); document.getElementById('bronchialbreathing2').play()">Bronchial Breathing 2</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick = "quiet(); document.getElementById('finecrackles1').play()">Fine Crackles</button>
+                </td>
+                <td>
+                    <button onclick = "quiet(); document.getElementById('coarsecrackles2').play()">Coarse crackles</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick = "quiet(); document.getElementById('stridor1').play()">Stridor</button>
+                    <br />
+                    <button onclick = "quiet(); document.getElementById('stridor2').play()">Stridor 2</button>
+                </td>
+                <td>
+                    <button onclick = "quiet(); document.getElementById('expiratorywheeze1').play()">Wheeze</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick = "quiet(); document.getElementById('pleuralrub1').play()">Pleural Friction Rub</button>
+                    <br />
+                    <button onclick = "quiet(); document.getElementById('pleuralrub2').play()">Pleural Friction Rub 2</button>
+                </td>
+            </tr>
+        </table>
+        
+        <hr/> 
+        
+        <table>
+            <tr> 
+                <td><button onclick = "quiet(); document.getElementById('COPD1').play()">COPD</button></td>
+                <td><button onclick = "quiet(); document.getElementById('asthma1').play()">Asthma</button</td> 
+            </tr> 
+            <tr> 
+                <td>
+                    <button onclick = "quiet(); document.getElementById('bronchiectasis1').play()">Bronchiectasis</button> 
+                    <br /> 
+                    <button onclick = "quiet(); document.getElementById('bronchiectasis2').play()">Bronchiectasis2</button
+                </td>
+            </tr> 
+        </table> 
 
-</div>
-<!-- percussion notes -->
-<audio id = "resonant1">
-    <source src = "Assets/resonant1.mp3">
-</audio>
+    </div>
+    <!-- percussion notes -->
+    <audio id = "resonant1">
+        <source src = "Assets/resonant1.mp3">
+    </audio>
 
-<audio id = "resonant2">
-    <source src = "Assets/resonant2.mp3">
-</audio>
+    <audio id = "resonant2">
+        <source src = "Assets/resonant2.mp3">
+    </audio>
 
-<audio id = "dull1">
-    <source src = "Assets/dull1.mp3">
-</audio>
+    <audio id = "dull1">
+        <source src = "Assets/dull1.mp3">
+    </audio>
 
-<audio id = "stonydullness1">
-    <source src = "Assets/stonydullness1.mp3">
-</audio>
+    <audio id = "stonydullness1">
+        <source src = "Assets/stonydullness1.mp3">
+    </audio>
 
-<!-- normal vescicular breath sounds -->
-<audio id = "vesicularbreathing1">
-    <source src = "Assets/vesicularbreathing1.mp3">
-</audio>
+    <!-- normal vescicular breath sounds -->
+    <audio id = "vesicularbreathing1">
+        <source src = "Assets/vesicularbreathing1.mp3">
+    </audio>
 
-<audio id = "vesicularbreathing2">
-    <source src = "Assets/vesicularbreathing2.mp3">
-</audio>
-
-
-
-<!-- diminished vesicular -->
-<audio id = "diminishedvesicularbreathing1">
-    <source src = "Assets/diminishedvesicularbreathing1.mp3">
-</audio>
-
-<!-- bronchial breath sounds -->
-<audio id = "bronchialbreathing1">
-    <source src = "Assets/bronchialbreathing1.mp3">
-</audio>
-
-<audio id = "bronchialbreathing2">
-    <source src = "Assets/bronchialbreathing2.mp3">
-</audio>
-
-<!-- stridor -->
-<audio id = "stridor1">
-    <source src = "Assets/stridor1.mp3">
-</audio>
-
-<audio id = "stridor2">
-    <source src = "Assets/stridor2.mp3">
-</audio>
-
-<!-- wheeze -->
-<audio id = "expiratorywheeze1">
-    <source src = "Assets/expiratorywheeze1.mp3">
-</audio>
-
-<audio id = "monophonicwheeze1">
-    <source src = "Assets/monophonicwheeze1.mp3">
-</audio>
-
-<audio id = "ncwheeze2">
-    <source src = "Assets/ncwheeze1.mp3">
-</audio>
+    <audio id = "vesicularbreathing2">
+        <source src = "Assets/vesicularbreathing2.mp3">
+    </audio>
 
 
-<!-- fine crackles -->
-<audio id = "finecrackles1">
-    <source src = "Assets/finecrackles1.mp3">
-</audio>
 
-<!-- coarse crackles -->
-<audio id = "coarsecrackles1">
-    <source src = "Assets/coarsecrackles1.mp3">
-</audio>
-<audio id = "coarsecrackles2">
-    <source src = "Assets/coarsecrackles2.mp3">
-</audio>
+    <!-- diminished vesicular -->
+    <audio id = "diminishedvesicularbreathing1">
+        <source src = "Assets/diminishedvesicularbreathing1.mp3">
+    </audio>
 
-<!-- pleural rub -->
-<audio id = "pleuralrub1">
-    <source src = "Assets/pleuralrub1.mp3">
-</audio>
-<audio id = "pleuralrub2">
-    <source src = "Assets/pleuralrub2.mp3">
-</audio>
+    <!-- bronchial breath sounds -->
+    <audio id = "bronchialbreathing1">
+        <source src = "Assets/bronchialbreathing1.mp3">
+    </audio>
 
-<!-- increased vocal resonance -->
-<audio id = "egophony1">
-    <source src = "Assets/egophony1.mp3">
-</audio>
+    <audio id = "bronchialbreathing2">
+        <source src = "Assets/bronchialbreathing2.mp3">
+    </audio>
 
-<audio id = "egophony2">
-    <source src = "Assets/egophony2.mp3">
-</audio>
+    <!-- stridor -->
+    <audio id = "stridor1">
+        <source src = "Assets/stridor1.mp3">
+    </audio>
 
-<!-- normal vocal resonance -->
+    <audio id = "stridor2">
+        <source src = "Assets/stridor2.mp3">
+    </audio>
 
-<!-- reduced vocal resonance -->
+    <!-- wheeze -->
+    <audio id = "expiratorywheeze1">
+        <source src = "Assets/expiratorywheeze1.mp3">
+    </audio>
+
+    <audio id = "monophonicwheeze1">
+        <source src = "Assets/monophonicwheeze1.mp3">
+    </audio>
+
+    <audio id = "ncwheeze2">
+        <source src = "Assets/ncwheeze1.mp3">
+    </audio>
+
+
+    <!-- fine crackles -->
+    <audio id = "finecrackles1">
+        <source src = "Assets/finecrackles1.mp3">
+    </audio>
+
+    <!-- coarse crackles -->
+    <audio id = "coarsecrackles1">
+        <source src = "Assets/coarsecrackles1.mp3">
+    </audio>
+    <audio id = "coarsecrackles2">
+        <source src = "Assets/coarsecrackles2.mp3">
+    </audio>
+
+    <!-- pleural rub -->
+    <audio id = "pleuralrub1">
+        <source src = "Assets/pleuralrub1.mp3">
+    </audio>
+    <audio id = "pleuralrub2">
+        <source src = "Assets/pleuralrub2.mp3">
+    </audio>
+
+    <!-- increased vocal resonance -->
+    <audio id = "egophony1">
+        <source src = "Assets/egophony1.mp3">
+    </audio>
+
+    <audio id = "egophony2">
+        <source src = "Assets/egophony2.mp3">
+    </audio>
+
+    <!-- normal vocal resonance -->
+
+    <!-- reduced vocal resonance -->
+    
+    <!-- Condition based sounds --> 
+    
+    <!-- COPD --> 
+    
+    <audio id = "COPD1">
+        <source src = "Assets/COPD2.mp3">
+    </audio>
+    
+    <!-- bronchiectasis --> 
+    
+    <audio id = "bronchiectasis1">
+        <source src = "Assets/bronchiectasis1.mp3">
+    </audio>
+    
+    <audio id = "bronchiectasis2">
+        <source src = "Assets/bronchiectasis2.mp3">
+    </audio>
+    
+    <!-- asthma --> 
+
+    <audio id = "asthma1">
+        <source src = "Assets/asthma1.mp3">
+    </audio>
+    
+  
 </body>
 </html>
