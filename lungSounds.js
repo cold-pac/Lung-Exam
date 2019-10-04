@@ -199,8 +199,8 @@ let answers = {
         signs: ["Increased work of breathing: tracheal tug, costal indrawing, use of accessory muscles", "nicotine staining of the fingers", "asterixis", "barrel shaped chest", "Bilateral reduced air entry on chest expansion", "Hoover's sign", "signs of cor pulmonale..."],
         percussion: "hyperresonant",
         percussionOptions: ["resonant2"],
-        auscultation: ["diminished vesicular breath sounds", "no adventitious sounds"],
-        auscultationOptions: ["diminishedvesicularbreathing1", "expiratorywheeze1"],
+        auscultation: ["diminished vesicular breath sounds", "wheeze"],
+        auscultationOptions: ["diminishedvesicularbreathing1", "expiratorywheeze1", "COPD1"],
         resonance: "normal vocal resonance",
         resonanceOptions: ["normalvocalresonance1"],
         investigations: ["spirometry/PFTs", "genetic screen for alpha-1 antitrypsin deficiency", "FBC - anaemia can contribute to dyspnoea", "BNP for heart failure", "ABGs/VBGs for severity", "CXR"],
@@ -243,7 +243,10 @@ let answers = {
                         Hyper-resonance on percussion (due to alveolar destruction, gas-trapping, hyper-inflation of the lungs)
                     </div>
                     <div class = "sign">
-                        Diminished vesicular breathing. 
+                        Diminished vesicular breathing. Wheeze (may only come out on forced expiration). 
+                    </div>
+                    <div class = "sign" id = "investigations">
+                        ${this.investigations}
                     </div>
                     <div id = "your-answers"></div>
                 </div>
@@ -312,7 +315,7 @@ let answers = {
         percussion: "",
         percussionOptions: [],
         auscultation: ["coarse crackles"],
-        auscultationOptions: ["coarsecrackles1", "coarsecrackles2"],
+        auscultationOptions: ["coarsecrackles1", "coarsecrackles2", "bronchiectasis1", "bronchiectasis2"],
         resonance: "",
         resonanceOptions: [],
         caseWriteUp: `
