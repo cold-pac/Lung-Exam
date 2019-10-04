@@ -231,4 +231,10 @@ html, body {
     #examDescription {
         margin: 10px;
     }
+    #start-menu button {
+        height: 3em; 
+        width: 7em;
+        margin: 30px;
+        padding: 20px;
+    }
 }
