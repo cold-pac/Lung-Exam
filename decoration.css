@@ -231,7 +231,10 @@ html, body {
     #examDescription {
         margin: 10px;
     }
-    #start-menu button:nth-child(odd) {
+    #start-menu button:nth-child(even) {
        display: none;
+    }
+    #start-menu button:nth-child(odd) {
+        font-size: 30px;
     }
 }
